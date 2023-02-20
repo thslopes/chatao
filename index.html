@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebRTC Chat</title>
+  </head>
+  <body>
+    <h1>Your public IP address is:</h1>
+    <p id="public-ip"></p>
+
+    <script>
+      const apiUrl = 'https://api.ipify.org?format=json';
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const publicIp = data.ip;
+          document.getElementById('public-ip').textContent = publicIp;
+        })
+        .catch(error => {
+          console.error('Error fetching public IP:', error);
+        });
+    </script>
+    <input type="text" id="message-input" placeholder="Enter your message...">
+    <button id="send-button">Send</button>
+    <ul id="message-list"></ul>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
